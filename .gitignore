@@ -218,3 +218,15 @@ __marimo__/
 .streamlit/secrets.toml
 
 .DS_Store
+
+
+node_modules/
+dist/
+test-results/
+.env
+.wrangler/
+.dev.vars
+
+
+.lou-op/
+.lou-op-jobs/
