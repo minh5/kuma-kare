@@ -1,0 +1,33 @@
+name = "kuma-kare"
+main = "worker/index.ts"
+compatibility_date = "2025-07-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Treat .md files as text modules so they can be imported as strings at build time.
+rules = [
+  { type = "Text", globs = ["**/*.md"], fallthrough = true }
+]
+
+# Route pattern: adjust per deployment. For /kuma subpath on a shared domain.
+routes = [
+  { pattern = "kuma.example.com/kuma/api/*", zone_name = "example.com" }
+]
+
+[vars]
+BASE_PATH = "/kuma"
+ALLOWED_EMAILS = "caretaker1@example.com,caretaker2@example.com"
+
+# Secrets — set via `wrangler secret put <NAME>`. Do NOT commit real values.
+# GOOGLE_CLIENT_ID
+# GOOGLE_CLIENT_SECRET
+# JWT_SECRET
+# ANTHROPIC_API_KEY
+
+[env.standalone]
+name = "kuma-kare-standalone"
+routes = [
+  { pattern = "kuma.example.com/api/*", zone_name = "example.com" }
+]
+[env.standalone.vars]
+BASE_PATH = "/"
+ALLOWED_EMAILS = "caretaker1@example.com,caretaker2@example.com"

@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { signJwt, verifyJwt } from '../worker/lib/jwt';
 
 describe('JWT utilities', () => {
